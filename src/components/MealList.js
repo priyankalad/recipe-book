@@ -9,15 +9,11 @@ export default function MealList(props) {
   if (data) recipes = data.recipes;
 
   return (
-    <div className="container-fluid mt-3">
-      <div className="row">
-        {recipes &&
-          recipes.map((m, i) => (
-            <div key={i} className="col-md-6 col-lg-3 mb-3">
-              <Meal meal={m} />
-            </div>
-          ))}
+    recipes &&
+    recipes.map((m, i) => (
+      <div key={i} className="col-md-6 col-lg-3 mb-3">
+        <Meal meal={m} />
       </div>
-    </div>
+    ))
   );
 }

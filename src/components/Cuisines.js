@@ -7,11 +7,6 @@ export default function Cuisines() {
   console.log("In cuisine component");
   console.log(cuisines);
   return (
-    <div className="container-fluid mt-3">
-      <div className="row">
-        {cuisines &&
-          cuisines.map((c, i) => <BoxWithLink key={i} name={c.strArea} />)}
-      </div>
-    </div>
+    cuisines && cuisines.map((c, i) => <BoxWithLink key={i} name={c.strArea} />)
   );
 }

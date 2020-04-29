@@ -1,19 +1,23 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { MealContext } from "../_contexts/_contexts";
 import BoxWithModal from "./BoxWithModal";
+import Modal from "./Modal";
 
 export default function Ingredients() {
   let { ingredients } = useContext(MealContext);
-  console.log("In cuisine component");
-  console.log(ingredients);
+  const [showModal, setShowModal] = useState(false);
+  const [ingredient, setIngredient] = useState(false);
+  let handleShowModal = (ingr) => {
+    setShowModal(true);
+    setIngredient(ingr);
+  };
   return (
-    <div className="container-fluid mt-3">
-      <div className="row">
-        {ingredients &&
-          ingredients.map((c, i) => (
-            <BoxWithModal key={i} name={c.strIngredient} />
-          ))}
-      </div>
-    </div>
+    <>
+      {ingredients &&
+        ingredients.map((ingr, i) => (
+          <BoxWithModal key={i} ingr={ingr} handleShowModal={handleShowModal} />
+        ))}
+      <Modal ingredient={ingredient} />
+    </>
   );
 }
