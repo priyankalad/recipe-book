@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import { MealContext } from "../_contexts/_contexts";
 import Meal from "./Meal";
 
-export default function MealList() {
+export default function MealList(props) {
+  let { name } = props.match.params;
   let data = useContext(MealContext);
   let recipes = null;
   if (data) recipes = data.recipes;
