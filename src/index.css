@@ -41,3 +41,10 @@ ol > li {
   background-color: #dc3545;
   color: white !important;
 }
+
+.breadcrumb > li > a {
+  color: #dc3545;
+}
+.breadcrumb > li > a :hover {
+  color: #dc3545;
+}

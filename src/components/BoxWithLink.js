@@ -6,7 +6,10 @@ export default function BoxWithLink(props) {
   return (
     <div className="col-md-4 col-lg-3">
       <span className="card border border-danger m-1">
-        <Link className="btn btn-link box-link" to="">
+        <Link
+          className="btn btn-link box-link"
+          to={`recipes-by-cuisine/${name}`}
+        >
           {name}
         </Link>
       </span>

@@ -10,7 +10,7 @@ import Layout from "./components/Layout";
 function App() {
   let [data, setData] = useState(null);
   useEffect(() => {
-    let categories = "https://www.themealdb.com/api/json/v1/1/list.php?c=list";
+    let categories = "https://www.themealdb.com/api/json/v1/1/categories.php";
     let cuisines = "https://www.themealdb.com/api/json/v1/1/list.php?a=list";
     let ingredients = "https://www.themealdb.com/api/json/v1/1/list.php?i=list";
     let allrecipes = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
@@ -29,7 +29,7 @@ function App() {
       .then(
         axios.spread((...responses) => {
           let data = {
-            categories: responses[0].data.meals,
+            categories: responses[0].data.categories,
             cuisines: responses[1].data.meals,
             ingredients: responses[2].data.meals,
             recipes: responses[3].data.meals,

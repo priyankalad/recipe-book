@@ -1,11 +1,42 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { MealContext } from "../_contexts/_contexts";
-import BoxWithLink from "./BoxWithLink";
+import BoxWithDesc from "./BoxWithDesc";
+import Modal from "./Modal";
+import Breadcrumb from "./Breadcrumb";
 
 export default function Categories() {
   const { categories } = useContext(MealContext);
+  const [showModal, setShowModal] = useState(false);
+  const [category, setCategory] = useState(null);
+  let breadcrumbs = [
+    { name: "Home", path: "/" },
+    { name: "All Categories", path: "/categories", activeLink: true },
+  ];
+  let handleShowModal = (category) => {
+    setShowModal(true);
+    setCategory(category);
+  };
   return (
-    categories &&
-    categories.map((c, i) => <BoxWithLink key={i} name={c.strCategory} />)
+    <>
+      <Breadcrumb links={breadcrumbs} />
+      {categories &&
+        categories.map((c, i) => (
+          <BoxWithDesc
+            key={i}
+            type="category"
+            object={c}
+            handleShowModal={handleShowModal}
+          />
+        ))}
+      {category ? (
+        <Modal
+          title={category.strCategory}
+          description={category.strCategoryDescription}
+          image={category.strCategoryThumb}
+        />
+      ) : (
+        ""
+      )}
+    </>
   );
 }

@@ -2,14 +2,19 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { RecipeDetailContext } from "../_contexts/_contexts";
 import { Link } from "react-router-dom";
+import Breadcrumb from "./Breadcrumb";
 
 export default function RecipeDetail(props) {
   let { id } = props.match.params;
+  let { breadcrumbs } = props.location.breadcrumbs;
+  const [breadCrumbs, setBreadCrumbs] = useState(breadcrumbs);
+
   let [recipeDetail, setRecipeDetail] = useState(null);
   const [ingredients, setIngredients] = useState(null);
   const [measures, setMeasures] = useState(null);
   const [instructions, setInstructions] = useState(null);
   useEffect(() => {
+    setBreadCrumbs(breadcrumbs.map((b) => (b.activeLink = false)));
     axios
       .get("https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + id)
       .then((res) => {
@@ -27,6 +32,11 @@ export default function RecipeDetail(props) {
               measures.push(detail[key]);
           }
         }
+
+        setBreadCrumbs([
+          ...breadCrumbs,
+          { name: detail.strMeal, activeLink: true },
+        ]);
         setRecipeDetail(detail);
         setMeasures(measures);
         setIngredients(ingredients);
@@ -38,14 +48,7 @@ export default function RecipeDetail(props) {
     <RecipeDetailContext.Provider value={recipeDetail}>
       <div className="container mt-3">
         <div className="row">
-          <Link to="/detail/" className="btn btn-link">
-            <i className="fa fa-chevron-left fa-3 mr-2" aria-hidden="true"></i>
-            Previous Recipe
-          </Link>
-          <Link to="/detail/" className="btn btn-link ml-auto">
-            Next Recipe
-            <i className="fa fa-chevron-right fa-3 ml-2" aria-hidden="true"></i>
-          </Link>
+          <Breadcrumb links={breadCrumbs} />
         </div>
         <div className="row">
           <div className="col-md-6">
