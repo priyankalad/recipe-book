@@ -10,8 +10,10 @@ export default function Layout(props) {
         </div>
       </div>
       <div className="row mt-3">
-        <div className="container-fluid">
-          <div className="row"> {props.children}</div>
+        <div className="col-12">
+          <div className="container">
+            <div className="row"> {props.children}</div>
+          </div>
         </div>
       </div>
     </div>
