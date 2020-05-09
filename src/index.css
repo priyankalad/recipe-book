@@ -48,3 +48,7 @@ ol > li {
 .breadcrumb > li > a :hover {
   color: #dc3545;
 }
+
+.slider-link:hover {
+  text-decoration: none;
+}

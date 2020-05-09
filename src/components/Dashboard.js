@@ -14,12 +14,11 @@ export default function Dashboard() {
       let { categories, cuisines, ingredients, recipes } = context;
       setTopRecipes(copyObject(recipes));
       setTopCategories(copyObject(categories));
-
-      // setTopCuisines(cuisines.slice(0, 10));
-      // setTopIngredients(ingredients.slice(0, 10));
+      setTopCuisines(copyObject(cuisines));
+      setTopIngredients(copyObject(ingredients));
     }
   }, [context]);
-
+  console.log(context);
   return (
     <>
       <div className="container-fluid">
@@ -28,7 +27,49 @@ export default function Dashboard() {
             <SliderHeader title="Categories" link="/categories" />
           </div>
           <div className="col-12 mb-3">
-            <SliderContainer items={topRecipes} />
+            <SliderContainer
+              items={topCategories}
+              sliderId="categorySlider"
+              link="/recipes-by-category/"
+            />
+          </div>
+        </div>
+
+        <div className="row" style={{ backgroundColor: "lavenderblush" }}>
+          <div className="col-12 p-3">
+            <SliderHeader title="Latest Recipes" link="/categories" />
+          </div>
+          <div className="col-12 mb-3">
+            <SliderContainer
+              items={topRecipes}
+              sliderId="recipesSlider"
+              link="/detail/"
+            />
+          </div>
+        </div>
+
+        <div className="row" style={{ backgroundColor: "lavenderblush" }}>
+          <div className="col-12 p-3">
+            <SliderHeader title="Ingredients" link="/ingredients" />
+          </div>
+          <div className="col-12 mb-3">
+            <SliderContainer
+              items={topIngredients}
+              sliderId="ingredientsSlider"
+              link="/recipes-by-ingr/"
+            />
+          </div>
+        </div>
+        <div className="row" style={{ backgroundColor: "lavenderblush" }}>
+          <div className="col-12 p-3">
+            <SliderHeader title="Cuisines" link="/cuisines" />
+          </div>
+          <div className="col-12 mb-3">
+            <SliderContainer
+              items={topCuisines}
+              sliderId="cuisinesSlider"
+              link="/recipes-by-cuisine/"
+            />
           </div>
         </div>
       </div>
@@ -38,6 +79,7 @@ export default function Dashboard() {
 
 function copyObject(arrObj) {
   let topObjects = arrObj.slice(0, 10);
+  console.log(topObjects);
   let result = topObjects.map((o) => {
     if (o.idCategory) {
       return {
@@ -48,6 +90,17 @@ function copyObject(arrObj) {
       return {
         name: o.strMeal,
         image: o.strMealThumb,
+        id: o.idMeal,
+      };
+    } else if (o.idIngredient) {
+      return {
+        name: o.strIngredient,
+        image: `https://www.themealdb.com/images/ingredients/${o.strIngredient}.png`,
+      };
+    } else if (o.strArea) {
+      return {
+        name: o.strArea,
+        image: "",
       };
     }
   });
