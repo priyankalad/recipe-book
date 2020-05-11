@@ -6,9 +6,7 @@ export default function Meal(props) {
   let { strMeal, idMeal, strMealThumb, strCategory, strArea } = meal;
   return (
     <div className="card h-100">
-      <Link
-        to={{ pathname: `/detail/${idMeal}`, breadcrumbs: { breadcrumbs } }}
-      >
+      <Link to={{ pathname: `/detail/${idMeal}`, breadcrumbs }}>
         <img className="card-img-top" src={strMealThumb} alt="Card image cap" />
       </Link>
       <div className="card-body">

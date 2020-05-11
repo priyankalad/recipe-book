@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 
 export default function SliderContent(props) {
   let { itemsGroup, index, link } = props;
+  let breadcrumbs = [{ name: "Home", path: "/" }];
+  console.log(breadcrumbs);
+
   return (
     <div className={`carousel-item ${index == 0 ? "active" : ""}`}>
       <div className="container-fluid">
@@ -13,7 +16,12 @@ export default function SliderContent(props) {
                 item.image ? (
                   <div key={i} className="col-sm-3 col-3 p-0 m-0">
                     <Link
-                      to={`${link}${item.id ? item.id : item.name}`}
+                      to={{
+                        pathname: `${link}${item.id ? item.id : item.name}`,
+                        breadcrumbs: item.id
+                          ? [{ name: "Home", path: "/" }]
+                          : null,
+                      }}
                       className="slider-link"
                     >
                       <div className="card">

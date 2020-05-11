@@ -5,8 +5,9 @@ import { Link } from "react-router-dom";
 import Breadcrumb from "./Breadcrumb";
 
 export default function RecipeDetail(props) {
+  console.log(props);
   let { id } = props.match.params;
-  let { breadcrumbs } = props.location.breadcrumbs;
+  let { breadcrumbs } = props.location;
   const [breadCrumbs, setBreadCrumbs] = useState(breadcrumbs);
 
   let [recipeDetail, setRecipeDetail] = useState(null);

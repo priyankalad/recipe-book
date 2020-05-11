@@ -37,7 +37,7 @@ export default function Dashboard() {
 
         <div className="row" style={{ backgroundColor: "lavenderblush" }}>
           <div className="col-12 p-3">
-            <SliderHeader title="Latest Recipes" link="/categories" />
+            <SliderHeader title="Latest Recipes" link="/allrecipes" />
           </div>
           <div className="col-12 mb-3">
             <SliderContainer

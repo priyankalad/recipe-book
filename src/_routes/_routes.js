@@ -8,6 +8,7 @@ import Dashboard from "../components/Dashboard";
 import RecipesByCategory from "../components/RecipesByCategory";
 import RecipesByIngredients from "../components/RecipesByIngredients";
 import RecipesByCuisine from "../components/RecipesByCuisine";
+import AllRecipes from "../components/AllRecipes";
 export default function Routes() {
   return (
     <>
@@ -15,6 +16,7 @@ export default function Routes() {
       <Route path="/cuisines" component={Cuisines}></Route>
       <Route path="/categories" component={Categories}></Route>
       <Route path="/ingredients" component={Ingredients}></Route>
+      <Route path="/allrecipes" component={AllRecipes}></Route>
       <Route
         path="/recipes-by-category/:category"
         component={RecipesByCategory}
