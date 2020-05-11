@@ -13,11 +13,14 @@ export default function RecipeDetail(props) {
   const [ingredients, setIngredients] = useState(null);
   const [measures, setMeasures] = useState(null);
   const [instructions, setInstructions] = useState(null);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     setBreadCrumbs(breadcrumbs.map((b) => (b.activeLink = false)));
+    setLoading(true);
     axios
       .get("https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + id)
       .then((res) => {
+        setLoading(false);
         let detail = res.data.meals[0];
         let ingredients = [];
         let measures = [];
@@ -42,9 +45,16 @@ export default function RecipeDetail(props) {
         setIngredients(ingredients);
         setInstructions(instructions);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        setLoading(false);
+        console.error(err);
+      });
   }, []);
-  return recipeDetail ? (
+  return loading ? (
+    <div className="col text-center text-danger mt-5">
+      <i class="fa fa-spinner fa-pulse fa-4x"></i>
+    </div>
+  ) : recipeDetail ? (
     <RecipeDetailContext.Provider value={recipeDetail}>
       <div className="container mt-3">
         <div className="row">
