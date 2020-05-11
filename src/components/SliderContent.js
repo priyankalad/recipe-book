@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 export default function SliderContent(props) {
   let { itemsGroup, index, link } = props;
   let breadcrumbs = [{ name: "Home", path: "/" }];
-  console.log(breadcrumbs);
-
   return (
     <div className={`carousel-item ${index == 0 ? "active" : ""}`}>
       <div className="container-fluid">

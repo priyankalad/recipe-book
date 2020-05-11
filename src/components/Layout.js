@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "./Header";
+import Search from "./Search";
 
 export default function Layout(props) {
   return (
@@ -7,6 +8,11 @@ export default function Layout(props) {
       <div className="row">
         <div className="col-12">
           <Header />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-12">
+          <Search />
         </div>
       </div>
       <div className="row mt-3">

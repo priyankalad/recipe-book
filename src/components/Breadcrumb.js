@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 export default function Breadcrumb(props) {
   let { links } = props;
-  console.log(props);
   return (
     <div className="col-12">
       <ol className="breadcrumb bg-white">
