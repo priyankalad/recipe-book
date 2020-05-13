@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { MealContext } from "../_contexts/_contexts";
+import { MealContext, SearchByContext } from "../_contexts/_contexts";
 import SliderContainer from "./SliderContainer";
 import SliderHeader from "./SliderHeader";
 

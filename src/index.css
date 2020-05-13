@@ -17,7 +17,9 @@ code {
 }
 
 ol > li {
-  padding-top: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
 }
 
 .navbar-brand {
@@ -55,4 +57,31 @@ ol > li {
 
 .slider-link:hover {
   text-decoration: none;
+}
+
+.auto-complete input {
+  outline: none;
+}
+
+.auto-complete ul {
+  list-style-type: none;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  border: 1px solid #ced4da;
+  border-top: 0;
+}
+.auto-complete ul::before {
+  content: "";
+}
+.auto-complete li {
+  font-size: 1rem;
+  color: #495057;
+  padding: 10px 5px;
+  cursor: pointer;
+}
+
+.auto-complete li:hover {
+  background-color: lavenderblush;
 }

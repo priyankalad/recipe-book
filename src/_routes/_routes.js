@@ -9,6 +9,7 @@ import RecipesByCategory from "../components/RecipesByCategory";
 import RecipesByIngredients from "../components/RecipesByIngredients";
 import RecipesByCuisine from "../components/RecipesByCuisine";
 import AllRecipes from "../components/AllRecipes";
+import SearchResult from "../components/SearchResult";
 export default function Routes() {
   return (
     <>
@@ -17,6 +18,10 @@ export default function Routes() {
       <Route path="/categories" component={Categories}></Route>
       <Route path="/ingredients" component={Ingredients}></Route>
       <Route path="/allrecipes" component={AllRecipes}></Route>
+      <Route
+        path="/search/:searchby/:searchval"
+        component={SearchResult}
+      ></Route>
       <Route
         path="/recipes-by-category/:category"
         component={RecipesByCategory}

@@ -52,7 +52,7 @@ export default function RecipeDetail(props) {
   }, []);
   return loading ? (
     <div className="col text-center text-danger mt-5">
-      <i class="fa fa-spinner fa-pulse fa-4x"></i>
+      <i className="fa fa-spinner fa-pulse fa-4x"></i>
     </div>
   ) : recipeDetail ? (
     <RecipeDetailContext.Provider value={recipeDetail}>
@@ -109,7 +109,7 @@ export default function RecipeDetail(props) {
             <ol>
               {ingredients &&
                 ingredients.map((ing, i) => (
-                  <li key={i}>
+                  <li key={i} className={i % 2 == 0 ? "bg-light" : "bg-white"}>
                     {ing} - {measures[i]}
                   </li>
                 ))}
@@ -119,7 +119,12 @@ export default function RecipeDetail(props) {
             <h4> Instructions</h4>
             <ol>
               {instructions &&
-                instructions.map((inst, i) => <li key={i}>{inst}</li>)}
+                instructions.map((inst, i) => (
+                  <>
+                    <li key={i}>{inst}</li>
+                    <hr />
+                  </>
+                ))}
             </ol>
           </div>
         </div>

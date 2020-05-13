@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
-import { MealContext } from "../_contexts/_contexts";
+import { MealContext, SearchByContext } from "../_contexts/_contexts";
 import BoxWithLink from "./BoxWithLink";
 import Breadcrumb from "./Breadcrumb";
 
 export default function Cuisines() {
   let { cuisines } = useContext(MealContext);
+
   let breadcrumbs = [
     { name: "Home", path: "/" },
     { name: "All Cuisines", path: "/cuisines", activeLink: true },

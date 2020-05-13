@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { MealContext } from "../_contexts/_contexts";
+import { MealContext, SearchByContext } from "../_contexts/_contexts";
 import BoxWithDesc from "./BoxWithDesc";
 import Modal from "./Modal";
 import Breadcrumb from "./Breadcrumb";

@@ -45,13 +45,13 @@ function App() {
   return (
     <>
       <Router>
-        <Layout>
-          <Switch>
-            <MealContext.Provider value={data}>
+        <MealContext.Provider value={data}>
+          <Layout>
+            <Switch>
               <Routes />
-            </MealContext.Provider>
-          </Switch>
-        </Layout>
+            </Switch>
+          </Layout>
+        </MealContext.Provider>
       </Router>
     </>
   );
