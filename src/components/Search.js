@@ -5,7 +5,7 @@ import AutoComplete from "./AutoComplete";
 
 function Search(props) {
   let [searchValue, setSearchValue] = useState("");
-  let [searchBy, setSearchBy] = useState("recipe_name");
+  let [searchBy, setSearchBy] = useState("");
   let context = useContext(MealContext);
 
   let [acData, setACData] = useState(null);
@@ -42,33 +42,46 @@ function Search(props) {
     setSearchValue(value);
   };
 
+  let handleClick = (e) => {
+    e.preventDefault();
+    fetch("http://172.16.4.27:8085/api/merchant/0000000000001445", {
+      method: "get",
+      headers: new Headers({
+        Authorization: "ApiKey tK4DEsoUHmOugopNIH25A3InudB79SoGNOGSASLoGVs",
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  };
   return (
-    <form className="form-inline mt-3">
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-4 col-lg-3">
-            <div className="form-group ">
-              <select
-                name="selectSearchBy"
-                id="selectSearchBy"
-                className="form-control ml-2 w-100"
-                id="selectSearchBy"
-                onChange={handleChange}
-              >
-                <option value="reacipe_name">Recipe Name</option>
-                <option value="category">Category</option>
-                <option value="cuisine">Cuisine</option>
-                <option value="ingredient">Ingredient</option>
-              </select>
-            </div>
+    <form>
+      <div className="d-flex">
+        <div className="d-inline-flex ">
+          <div className="form-group m-3 ">
+            <select
+              name="selectSearchBy"
+              id="selectSearchBy"
+              className="form-control ml-2 w-100"
+              id="selectSearchBy"
+              onChange={handleChange}
+            >
+              <option value="">Select</option>
+              <option value="recipe_name">Recipe Name</option>
+              <option value="category">Category</option>
+              <option value="cuisine">Cuisine</option>
+              <option value="ingredient">Ingredient</option>
+            </select>
           </div>
-          <div className="col-8 col-lg-4">
-            <AutoComplete
-              data={acData}
-              label={acLabel}
-              handleSearchValueChange={handleSearchValueChange}
-            />
-          </div>
+          <AutoComplete
+            data={acData}
+            label={acLabel}
+            handleSearchValueChange={handleSearchValueChange}
+          />
+        </div>
+        <div className="mt-3 ml-5 ">
+          <button className="btn btn-danger" onClick={handleClick}>
+            Search
+          </button>
         </div>
       </div>
     </form>

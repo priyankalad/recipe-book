@@ -42,7 +42,7 @@ export default function AutoComplete(props) {
       <input
         type="text"
         value={textboxValue}
-        className="form-control w-100"
+        className="form-control w-100 m-3"
         placeholder="Search here..."
         onChange={handleTextChange}
       />
@@ -51,7 +51,7 @@ export default function AutoComplete(props) {
   );
 }
 
-AutoComplete.propTypes = {
-  label: PropTypes.string.isRequired,
-  data: PropTypes.array.isRequired,
-};
+// AutoComplete.propTypes = {
+//   label: PropTypes.string.isRequired,
+//   data: PropTypes.array.isRequired,
+// };
